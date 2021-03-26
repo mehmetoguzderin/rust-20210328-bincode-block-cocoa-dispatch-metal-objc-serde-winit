@@ -12,7 +12,7 @@ block = "0.1.6"
 cocoa = "0.24.0"
 dispatch = "0.2.0"
 metal = "0.21.0"
-objc = { version = "0.2.7", features = ["exception", "verify_message"] }
+objc = { version = "0.2.7", features = ["exception"] }
 serde = { version = "1.0.125", features = ["derive"] }
 serde_json = "1.0.64"
 winit = { version = "0.24.0", features = ["serde"] }

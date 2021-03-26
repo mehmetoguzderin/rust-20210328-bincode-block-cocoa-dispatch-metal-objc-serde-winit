@@ -1,12 +1,17 @@
 use winit::{
-    event::{Event, WindowEvent},
+    dpi,
+    event::{ElementState, Event, KeyboardInput, VirtualKeyCode, WindowEvent},
     event_loop::{ControlFlow, EventLoop},
     window::WindowBuilder,
 };
 
 fn main() {
     let event_loop = EventLoop::new();
-    let window = WindowBuilder::new().build(&event_loop).unwrap();
+    let window = WindowBuilder::new()
+        .with_inner_size(dpi::LogicalSize::new(512, 512))
+        .with_resizable(false)
+        .build(&event_loop)
+        .unwrap();
 
     event_loop.run(move |event, _, control_flow| {
         *control_flow = ControlFlow::Poll;
