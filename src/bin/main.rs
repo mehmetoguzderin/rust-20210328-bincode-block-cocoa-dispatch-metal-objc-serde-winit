@@ -32,9 +32,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         view.setLayer(mem::transmute(layer.as_ref()));
     }
     let library = {
-        let source = std::fs::read_to_string("src/gpu/main.metal")?;
         let options = metal::CompileOptions::new();
-        device.new_library_with_source(source.as_str(), &options)?
+        device.new_library_with_source(include_str!("../gpu/main.metal"), &options)?
     };
     let compute_pipeline_state = {
         let compute_function = library.get_function("compute", None)?;
