@@ -13,6 +13,7 @@ use winit::{
 fn main() -> Result<(), Box<dyn Error>> {
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new()
+        .with_title("rust-20210328-bincode-block-cocoa-dispatch-metal-objc-serde-winit")
         .with_inner_size(dpi::LogicalSize::new(512, 512))
         .build(&event_loop)?;
     let device = Device::system_default().ok_or("")?;
