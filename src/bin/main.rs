@@ -1,7 +1,10 @@
+#[cfg(target_os = "macos")]
 use cocoa::appkit::NSView;
+#[cfg(target_os = "macos")]
 use metal::*;
 use std::error::Error;
 use std::mem;
+#[cfg(target_os = "macos")]
 use winit::{
     dpi,
     event::{ElementState, Event, KeyboardInput, VirtualKeyCode, WindowEvent},
@@ -10,6 +13,7 @@ use winit::{
     window::WindowBuilder,
 };
 
+#[cfg(target_os = "macos")]
 fn main() -> Result<(), Box<dyn Error>> {
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new()
@@ -93,4 +97,10 @@ fn main() -> Result<(), Box<dyn Error>> {
             _ => (),
         }
     });
+}
+
+#[cfg(not(target_os = "macos"))]
+fn main() -> Result<(), Box<dyn Error>> {
+    println!("This package is designed to be built for MacOS.");
+    Ok(())
 }
